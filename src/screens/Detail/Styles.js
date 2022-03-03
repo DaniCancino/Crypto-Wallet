@@ -1,4 +1,5 @@
 import { StyleSheet} from 'react-native';
+import { textDecorationColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const styles = StyleSheet.create({
     nameText:{
@@ -32,6 +33,21 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         letterSpacing: 1,
         fontWeight: '500'
+    },
+    textInput:{
+        borderColor: 'transparent',
+        borderBottomColor: '#fff',
+        borderWidth: 1,
+        padding: 7,
+        marginLeft: 10,
+        color: '#fff',
+        width: '60%'
+    },
+    inputContainer:{
+        flexDirection: 'row',
+        alignSelf: 'center',
+        borderBottomColor: '#fff',
+        width: '55%'
     }
 })
 
