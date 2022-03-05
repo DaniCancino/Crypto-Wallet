@@ -3,10 +3,9 @@ import React from 'react'
 import styles from './Styles.js'
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
-import crypto from '../../../assets/Data/crypto.json'
 import { useNavigation } from '@react-navigation/native';
 
-export default function Header() {
+export default function Header({image, symbol, rank}) {
 
     const navigation = useNavigation()
 
@@ -20,14 +19,14 @@ export default function Header() {
         />
         <View style={{flexDirection: 'row'}}>
             <Image 
-                source={{uri: crypto.image.small}} 
+                source={{uri: image}} 
                 style={styles.image}
             />
             <Text style={styles.text}>
-                {crypto.symbol.toUpperCase()}
+                {symbol.toUpperCase()}
             </Text>
             <View style={styles.rankCointainer}>
-                <Text style={styles.text}>#{crypto.market_data.market_cap_rank}</Text>
+                <Text style={styles.text}>#{rank}</Text>
             </View>
         </View>
         <FontAwesome5 name="user-circle" size={26} color="white" />

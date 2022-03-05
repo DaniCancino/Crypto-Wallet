@@ -13,7 +13,8 @@ export default function CoinItem({ props }) {
         market_cap_rank, 
         price_change_percentage_24h,
         current_price,
-        market_cap
+        market_cap, 
+        id
     } = props;
 
     const navigation = useNavigation()
@@ -42,7 +43,7 @@ export default function CoinItem({ props }) {
   return (
     <Pressable 
       style={styles.container}
-      onPress={() => navigation.navigate('Detail')}
+      onPress={() => navigation.navigate('Detail', {coinId: id})}
     >
       <Image source={{ uri: image }} style={styles.image} />
       <View>
