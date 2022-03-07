@@ -1,7 +1,6 @@
 import { View, Text, FlatList, ActivityIndicator } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import CoinItem from '../../components/CoinItem'
-import cryptocurrencies from '../../../assets/Data/cryptocurrencies.json'
 import {getAllCoins} from '../../services/requests.js'
 
 export default function Home() {
@@ -14,6 +13,7 @@ export default function Home() {
     setCoins(fetchedCoins)
     setLoad(false)
   }
+
 
   useEffect(()=>{
     fetchAllCoins()
@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <View>
      <FlatList
-        data={cryptocurrencies}
+        data={coins}
         renderItem={({item}) => <CoinItem  props={item}/>}
     />
     </View>

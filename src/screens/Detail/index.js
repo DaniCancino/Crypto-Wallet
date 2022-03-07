@@ -15,7 +15,8 @@ export default function Detail() {
     const [loading, setLoading] =useState(false)
     const route = useRoute()
     const [coinState, setCoinState] = useState(1)
-    const [price, setPrice] = useState(1)
+    const [price, setPrice] = useState("")
+    const [priceConverter, setPriceConverter] = useState()
     const {
         params: {coinId},
     } = route
@@ -26,19 +27,21 @@ export default function Detail() {
         const fetchedChartData = await getChartCoinData(coinId)
         setCoin(fetchedCoinData)
         setChart(fetchedChartData)
+        setPrice(fetchedCoinData.market_data.current_price.usd)
+        setPriceConverter(fetchedCoinData.market_data.current_price.usd)
         setLoading(false)
     }  
 
     const changeCoin= (value) =>{
         setCoinState(value)
         const float = parseFloat(value) || 0
-        setPrice(float * initialState.priceCoin)
+        float == 0 || !float ? setPriceConverter(price) : setPriceConverter(float * price)
     }
     
     const changeUsd= (value) =>{
-        setPrice(value)
+        setPriceConverter(value)
         const float = parseFloat(value) || 0
-        setCoinState(float / initialState.priceCoin)
+        setCoinState(float / price)
     }
     
     
@@ -101,7 +104,7 @@ export default function Detail() {
                     <TextInput 
                         style={styles.textInput}
                         keyboardType= 'numeric'
-                        value={price.toString()}
+                        value={priceConverter.toString()}
                         placeholderTextColor='#fff'
                         onChangeText={changeUsd}
                     ></TextInput>
