@@ -57,11 +57,16 @@ export default function CoinItem({ props }) {
           <Text style={stlyes.detailText}>{symbol.toUpperCase()}</Text>
           <AntDesign
             name={price_change_percentage_24h < 0 ? "caretdown" : "caretup"}
-            size={18}
+            size={16}
             color={price_change_percentage_24h < 0 ? "#FB3030" : "#53B816"}
             style={{ marginRight: 5 }}
           />
-          <Text style={stlyes.detailText}>
+          <Text 
+            style={{
+              fontSize: 15,
+              marginRight: 5,
+              color: price_change_percentage_24h > 0 ? '#53B816' : '#FB3030' 
+          }}>
             {price_change_percentage_24h.toFixed(2)}%
           </Text>
         </View>
